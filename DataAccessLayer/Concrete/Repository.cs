@@ -20,27 +20,29 @@ namespace DataAccessLayer.Concrete
 
         public int Delete(T p)
         {
-            throw new NotImplementedException();
+            _object.Remove(p);
+            return c.SaveChanges();
         }
 
         public T GetByID(int id)
         {
-            throw new NotImplementedException();
+            return _object.Find(id);
         }
 
         public int Insert(T p)
         {
-            throw new NotImplementedException();
+            _object.Add(p);
+            return c.SaveChanges();
         }
 
         public List<T> List()
         {
-            throw new NotImplementedException();
+            return _object.ToList();
         }
 
         public int Update(T p)
         {
-            throw new NotImplementedException();
+            return c.SaveChanges();
         }
     }
 }
