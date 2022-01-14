@@ -15,7 +15,7 @@ namespace EntityLayer.Concrete
         [StringLength(500)]
         public string AboutContent1 { get; set; }
 
-        [StringLength(500)]
+        [StringLength(500)] 
         public string AboutContent2 { get; set; }
 
         [StringLength(100)]
