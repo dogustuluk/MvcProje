@@ -23,5 +23,17 @@ namespace MvcProje.Controllers
         {
             return PartialView();
         }
+
+        public PartialViewResult OtherFeaturedPost()
+        {
+            return PartialView();
+        }
+
+        public PartialViewResult MailSubscribe()
+        {
+            return PartialView();
+        }
+
+       
     }
 }
