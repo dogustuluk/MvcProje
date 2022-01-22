@@ -13,5 +13,15 @@ namespace MvcProje.Controllers
         {
             return View();
         }
+
+        public PartialViewResult BlogList()
+        {
+            return PartialView();
+        }
+
+        public PartialViewResult FeaturedPost()
+        {
+            return PartialView();
+        }
     }
 }
