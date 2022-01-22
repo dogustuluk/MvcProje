@@ -49,6 +49,10 @@ namespace MvcProje.Controllers
             return PartialView();
         }
 
+        public ActionResult BlogByCategory()
+        {
+            return View();
+        }
 
     }
 }
