@@ -89,14 +89,16 @@ namespace MvcProje.Controllers
             return View();
         } 
 
-        public PartialViewResult BlogCover()
+        public PartialViewResult BlogCover(int id)
         {
-            return PartialView();
+            var BlogCover = bm.GetBlogById(id);
+            return PartialView(BlogCover);
         }
 
-        public PartialViewResult BlogReadAll()
+        public PartialViewResult BlogReadAll(int id) //controller tarafında parametre gönderilecek ise 'id' olarak gönderilmesi zorunludur. Çünkü app start klasöründe route config'te parametre kullanılacaksa 'id' olmalı diyor.
         {
-            return PartialView();
+            var BlogDetailsList = bm.GetBlogById(id);
+            return PartialView(BlogDetailsList);
         }
 
         public ActionResult BlogByCategory()

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -38,6 +39,11 @@ namespace DataAccessLayer.Concrete
         public List<T> List()
         {
             return _object.ToList();
+        }
+
+        public List<T> List(Expression<Func<T, bool>> filter)
+        {
+            return _object.Where(filter).ToList(); //generic list'i bozmamış oluruz böylelikle
         }
 
         public int Update(T p)

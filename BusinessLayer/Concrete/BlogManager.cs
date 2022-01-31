@@ -16,5 +16,10 @@ namespace BusinessLayer.Concrete
         {
             return repoblog.List();
         }
+
+      public List<Blog> GetBlogById(int id)
+        {
+            return repoblog.List(x => x.BlogId == id); //ilgili sınıfa ait parametre göndermemiz gerekiyor. sadece 'list' metodu çağrıldı
+        }
     }
 }
