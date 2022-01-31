@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Concrete;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +17,9 @@ namespace MvcProje.Controllers
             return View();
         }
 
-        public PartialViewResult BlogList()
+        public PartialViewResult BlogList(int page = 1)
         {
-            var bloglist = bm.GetAll();
+            var bloglist = bm.GetAll().ToPagedList(page,6);
             return PartialView(bloglist);
         }
 
