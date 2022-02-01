@@ -21,5 +21,15 @@ namespace BusinessLayer.Concrete
         {
             return repocomment.List(x => x.BlogId == id);
         }
+
+        public int CommentAdd(Comment c)
+        {
+            if (c.UserName.Length <= 2 || c.UserName == "" || c.CommentText.Length <= 4 || c.CommentText.Length >=301 || c.Mail == "")
+            {
+                return -1;
+            }
+            return repocomment.Insert(c);
+        }
+
     }
 }
