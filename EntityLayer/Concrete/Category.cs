@@ -15,7 +15,8 @@ namespace EntityLayer.Concrete
         [StringLength(30)]
         public string CategoryName { get; set; }
 
-
+        [StringLength(500)]
+        public string CategoryDescription { get; set; }
         ////Kategoriler ile blogları ilişikili hale getirmiş olduk.
         public ICollection<Blog> Blogs { get; set; }
     }
