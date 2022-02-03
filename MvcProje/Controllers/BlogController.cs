@@ -104,6 +104,10 @@ namespace MvcProje.Controllers
         public ActionResult BlogByCategory(int id)
         {
             var BlogListByCategory = bm.GetBlogByCategory(id);
+            var CategoryName = bm.GetBlogByCategory(id).Select(y => y.Category.CategoryName).FirstOrDefault();
+            ViewBag.CategoryName = CategoryName;
+            var CategoryDesc = bm.GetBlogByCategory(id).Select(y => y.Category.CategoryDescription).FirstOrDefault();
+            ViewBag.CategoryDesc = CategoryDesc;
             return View(BlogListByCategory);
         }
 
