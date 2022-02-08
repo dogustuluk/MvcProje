@@ -111,5 +111,10 @@ namespace MvcProje.Controllers
             return View(BlogListByCategory);
         }
 
+        public ActionResult AdminBlogList()
+        {
+            return View();
+        }
+
     }
 }
