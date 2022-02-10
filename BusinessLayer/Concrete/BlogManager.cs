@@ -51,5 +51,13 @@ namespace BusinessLayer.Concrete
         {
             return repoblog.Find(x => x.BlogId == id);
         }
+
+        public int UpdateBlog(Blog p)
+        {
+            Blog blog = repoblog.Find(x => x.BlogId == p.BlogId);
+            blog.BlogTitle = p.BlogTitle;
+            blog.BlogContent = p.BlogContent;
+            return repoblog.Update(blog);
+        }
     }
 }
