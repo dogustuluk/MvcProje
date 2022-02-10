@@ -25,6 +25,8 @@ namespace DataAccessLayer.Abstract
          * alttaki yapıda kullanırsak sorun ortadan kalkacak.
          */
         List<T> List(Expression<Func<T, bool>> filter); // linq expression ile istediğimiz herhangi bir kritere göre arama işlemi veya getirme işlemi yapabiliriz
-                                                       // where yerine filter da yazabiliriz
+                                                        // where yerine filter da yazabiliri
+
+        T Find(Expression<Func<T, bool>> where);
     }
 }
