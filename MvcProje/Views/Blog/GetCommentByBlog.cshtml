@@ -1,0 +1,20 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Comment>
+@{
+    ViewBag.Title = "GetCommentByBlog";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Bloğa Yapılan Yorumlar</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>Kullanıcı</th>
+        <th>Yorum</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.UserName</td>
+            <td>@item.CommentText</td>
+        </tr>
+    }
+</table>
