@@ -35,7 +35,7 @@ namespace EntityLayer.Concrete
         [StringLength(50)]
         public string Password { get; set; }
 
-        [StringLength(13)]
+        [StringLength(16)]
         public string PhoneNumber { get; set; }
         ////Yazarlar ile blogları ilişikili hale getirmiş olduk.
         public ICollection<Blog> Blogs { get; set; }

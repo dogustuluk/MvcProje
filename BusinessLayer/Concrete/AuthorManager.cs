@@ -16,5 +16,37 @@ namespace BusinessLayer.Concrete
         {
             return repoauthor.List();
         }
+
+        public int AddAuthorBL(Author p)
+        {
+            if (p.AuthorName == "" || p.AuthorTitle == "" || p.Mail == "" || p.Password == "" || p.PhoneNumber == ""
+                || p.AboutShort == "" || p.AuthorAbout == "")
+            {
+                return -1;
+            }
+            return repoauthor.Insert(p);
+        }
+
+        //yazar id'sini edit sayfasına taşıma
+
+        public Author FindAuthor(int id)
+        {
+            return repoauthor.Find(x => x.AuthorId == id);
+        }
+
+        public int EditAuthor(Author p)
+        {
+            Author author = repoauthor.Find(x => x.AuthorId == p.AuthorId);
+            author.AboutShort = p.AboutShort;
+            author.AuthorAbout = p.AuthorAbout;
+            author.AuthorImage = p.AuthorImage;
+            author.AuthorName = p.AuthorName;
+            author.AuthorTitle = p.AuthorTitle;
+            author.Mail = p.Mail;
+            author.Password = p.Password;
+            author.PhoneNumber = p.PhoneNumber;
+            return repoauthor.Update(author);
+
+        }
     }
 }
