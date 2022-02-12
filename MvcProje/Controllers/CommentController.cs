@@ -32,11 +32,16 @@ namespace MvcProje.Controllers
             return PartialView();
         }
 
-        public ActionResult AdminCommentList()
+        public ActionResult AdminCommentListTrue()
         {
-            var commentlist = cm.CommentList();
+            var commentlist = cm.CommentByStatusTrue();
             return View(commentlist);
         }
 
+        public ActionResult StatusChangeToFalse(int id)
+        {
+            cm.CommentStatusChangeToFalse(id);
+            return RedirectToAction("AdminCommentListTrue");
+        }
     }
 }
