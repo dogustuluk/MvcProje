@@ -38,10 +38,21 @@ namespace MvcProje.Controllers
             return View(commentlist);
         }
 
+        public ActionResult AdminCommentListFalse()
+        {
+            var commentlist = cm.CommentByStatusFalse();
+            return View(commentlist);
+        }
+
         public ActionResult StatusChangeToFalse(int id)
         {
             cm.CommentStatusChangeToFalse(id);
             return RedirectToAction("AdminCommentListTrue");
+        }
+        public ActionResult StatusChangeToTrue(int id)
+        {
+            cm.CommentStatusChangeToTrue(id);
+            return RedirectToAction("AdminCommentListFalse");
         }
     }
 }
