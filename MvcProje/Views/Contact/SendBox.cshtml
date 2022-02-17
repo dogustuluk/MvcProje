@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<EntityLayer.Concrete.Contact>
+
+@{
 
     ViewBag.Title = "SendBox";
 
@@ -278,6 +280,10 @@
                             <table class="table table-hover table-striped">
 
                                 <tbody>
+                                    @foreach (var item in Model.OrderByDescending(i => i.MessageDate))
+                                    {
+
+
 
                                     <tr>
 
@@ -295,20 +301,20 @@
 
                                         <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
 
-                                        <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
+                                        <td class="mailbox-name"><a href="/Contact/MessageDetails/@item.ContactId">@item.Name @item.SurName</a></td>
 
                                         <td class="mailbox-subject">
 
-                                            <b>AdminLTE 3.0 Issue</b> - Trying to find a solution to this problem...
+                                            <b>@item.Subject</b> - @item.Message.Substring(0,item.Message.Substring(0,50).LastIndexOf(" "))...
 
                                         </td>
 
                                         <td class="mailbox-attachment"></td>
 
-                                        <td class="mailbox-date">5 mins ago</td>
+                                        <td class="mailbox-date">@(((DateTime)item.MessageDate).ToString("dd-MMM-yyy-HH-mm"))</td>
 
                                     </tr>
-
+                                    }
                                 </tbody>
 
                             </table>
