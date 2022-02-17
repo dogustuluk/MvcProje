@@ -28,5 +28,10 @@ namespace MvcProje.Controllers
             cm.BLContactAdd(p);
             return View();
         }
+
+        public ActionResult SendBox()
+        {
+            return View();
+        }
     }
 }
