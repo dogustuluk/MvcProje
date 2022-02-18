@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Chart2";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -31,7 +31,7 @@
 
                 contentType: "application/json",
 
-                url: '@Url.Action("VisualizeResult", "Chart")',
+                url: '@Url.Action("VisualizeResult2", "Chart")',
 
                 success: function (result) {
 
@@ -69,7 +69,7 @@
 
             $.each(result, function (i, obj) {
 
-                dataArray.push([obj.CategoryName, obj.BlogCount]);
+                dataArray.push([obj.BlogName, obj.Rating]);
 
             });
 
@@ -79,7 +79,7 @@
 
             var columnChartOptions = {
 
-                title: "Kategori Blog Statik Pay Grafik",
+                title: "Blog Derece Pay Grafik",
 
                 width: 1000,
 
@@ -112,3 +112,5 @@
 </body>
 
 </html>
+
+
