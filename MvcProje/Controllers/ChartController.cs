@@ -62,5 +62,9 @@ namespace MvcProje.Controllers
         {
             return View();
         }
+        public ActionResult Chart3()
+        {
+            return View();
+        }
     }
 }
