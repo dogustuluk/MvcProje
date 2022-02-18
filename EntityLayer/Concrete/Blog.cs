@@ -20,6 +20,7 @@ namespace EntityLayer.Concrete
         public DateTime BlogDate { get; set; }
         public string BlogContent { get; set; }
 
+        public int BlogRating { get; set; }
 
         //Kategoriler ile blogları ilişikili hale getirmiş olduk.
         public int CategoryId { get; set; }
