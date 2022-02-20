@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessLayer.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,9 +10,12 @@ namespace MvcProje.Controllers
     public class UserController : Controller
     {
         // GET: User
-        public ActionResult Index()
+        UserProfileManager userProfile = new UserProfileManager();
+        public ActionResult Index(string mail)
         {
-            return View();
+            mail = (string)Session["Mail"];
+            var profilevalues = userProfile.GetAuthorByMail(mail);
+            return View(profilevalues);
         }
     }
 }
