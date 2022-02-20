@@ -24,7 +24,7 @@ Author URL: http://w3layouts.com
     <link rel="stylesheet" href="~/Report-Login-Free/css/style.css" type="text/css" media="all" />
     <!--//Style-CSS -->
 
-    <link rel="stylesheet" href="~/Report-Login-Free/css/font-awesome.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="/Report-Login-Free/css/font-awesome.min.css" type="text/css" media="all">
 
 </head>
 
@@ -39,12 +39,12 @@ Author URL: http://w3layouts.com
                 <div class="main-hotair">
                     <div class="content-wthree">
                         <h2>Login Paneli</h2>
-                        <form action="#" method="post">
-                            <input type="text" class="text" name="text" placeholder="Mail Adresi" required="" autofocus>
-                            <input type="password" class="password" name="password" placeholder="Şifre" required="" autofocus>
+                        @using (Html.BeginForm("AuthorLogin", "Login", FormMethod.Post))
+                        {
+                            <input type="text" class="text" name="Mail" placeholder="Mail Adresi" required="" autofocus>
+                            <input type="password" class="password" name="Password" placeholder="Şifre" required="" autofocus>
                             <button class="btn" type="submit">Giriş Yap</button>
-                        </form>
-
+                        }
                         <p class="account">Şifremi Unuttum <a href="#signup">Şifre Gönder</a></p>
                     </div>
                     <div class="w3l_form align-self">
