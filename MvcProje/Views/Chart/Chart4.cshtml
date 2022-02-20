@@ -1,5 +1,11 @@
 ﻿
 @{
+    ViewBag.Title = "Chart4";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@{
     ViewBag.Title = "Chart3";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
@@ -79,7 +85,7 @@
 
             var columnChartOptions = {
 
-                title: "Blog Derece Column Grafik",
+                title: "Blog Derece Line Grafik",
 
                 width: 1000,
 
@@ -91,7 +97,7 @@
 
 
 
-            var columnChart = new google.visualization.ColumnChart(document
+            var columnChart = new google.visualization.LineChart(document
 
                 .getElementById('Piechart_div'));
 

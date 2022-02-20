@@ -66,5 +66,9 @@ namespace MvcProje.Controllers
         {
             return View();
         }
+        public ActionResult Chart4()
+        {
+            return View();
+        }
     }
 }
