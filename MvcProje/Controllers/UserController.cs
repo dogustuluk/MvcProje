@@ -24,6 +24,11 @@ namespace MvcProje.Controllers
             var profilvalues = userProfile.GetAuthorByMail(mail);
             return PartialView(profilvalues);
         }
+        public ActionResult UpdateUserProfile(Author auth)
+        {
+            userProfile.EditAuthor(auth);
+            return RedirectToAction("Index");
+        }
         public ActionResult BlogList(string mail)
         {
             mail = (string)Session["Mail"];
