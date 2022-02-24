@@ -3,7 +3,7 @@
     ViewBag.Title = "BlogList";
     Layout = "~/Views/Shared/_AuthorLayout.cshtml";
 }
-@{ string color = ""; string degree = "";}
+@{ string color = ""; string degree = ""; string progressBar = ""; }
 <!DOCTYPE html>
 
 <html>
@@ -92,24 +92,27 @@
                             {
                                 color = "post-category text-white bg-success mb-3";
                                 degree = "Çok Başarılı";
+                                progressBar = "progress-bar bg-green";
 
                             }
                             if (item.BlogRating >= 70 && item.BlogRating <= 84)
                             {
                                 color = "post-category text-white bg-info mb-3";
                                 degree = "Başarılı";
+                                progressBar = "progress-bar bg-blue";
                             }
                             if (item.BlogRating >= 50 && item.BlogRating <= 69)
                             {
                                 color = "post-category text-white bg-warning mb-3";
                                 degree = "Yeterli";
+                                progressBar = "progress-bar bg-yellow";
                             }
                             if (item.BlogRating >= 0 && item.BlogRating <= 49)
                             {
                                 color = "post-category text-white bg-danger mb-3";
                                 degree = "Başarısız";
+                                progressBar = "progress-bar bg-red";
                             }
-
 
                             <tr>
 
@@ -121,7 +124,7 @@
 
                                     <div class="progress progress-sm">
 
-                                        <div class="progress-bar bg-green" role="progressbar" aria-volumenow="@item.BlogRating"
+                                        <div class="progress-bar @progressBar" role="progressbar" aria-volumenow="@item.BlogRating"
                                              aria-volumemin="0" aria-volumemax="10" style="width: @item.BlogRating%">
 
                                         </div>
@@ -144,7 +147,7 @@
 
                                 <td class="project-actions text-right">
 
-                                    <a class="btn btn-info btn-sm" href="#">
+                                    <a class="btn btn-info btn-sm" href="/User/UpdateBlog/@item.BlogId">
 
                                         <i class="fas fa-pencil-alt">
 
