@@ -21,13 +21,15 @@
         <!-- Default box -->
 
         <div class="card">
+            
 
             <div class="card-header">
 
                 <h3 class="card-title">Bloglarım</h3>
 
+                
                 <div class="card-tools">
-
+                   
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
 
                         <i class="fas fa-minus"></i>
@@ -43,7 +45,7 @@
                 </div>
 
             </div>
-
+             <a href="/User/AddNewBlog/" class="btn btn-info">Yeni Blog Yaz</a>
             <div class="card-body p-0">
 
                 <table class="table table-striped projects">
@@ -97,7 +99,7 @@
                             }
                             if (item.BlogRating >= 70 && item.BlogRating <= 84)
                             {
-                                color = "post-category text-white bg-info mb-3";
+                                color = "post-category text-white bg-blue mb-3";
                                 degree = "Başarılı";
                                 progressBar = "progress-bar bg-blue";
                             }
@@ -107,11 +109,17 @@
                                 degree = "Yeterli";
                                 progressBar = "progress-bar bg-yellow";
                             }
-                            if (item.BlogRating >= 0 && item.BlogRating <= 49)
+                            if (item.BlogRating > 0 && item.BlogRating <= 49)
                             {
                                 color = "post-category text-white bg-danger mb-3";
                                 degree = "Başarısız";
                                 progressBar = "progress-bar bg-red";
+                            }
+                            if (item.BlogRating == 0)
+                            {
+                                color = "post-category text-white bg-black mb-3";
+                                degree = "Oylanmamış Blog";
+                                
                             }
 
                             <tr>
