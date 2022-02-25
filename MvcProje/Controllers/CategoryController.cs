@@ -20,6 +20,7 @@ namespace MvcProje.Controllers
             return View(categoryvalues);
         }
 
+        [AllowAnonymous]
         public PartialViewResult BlogDetailsCategoryList()
         {
             var categoryvalues = cm.GetAll();

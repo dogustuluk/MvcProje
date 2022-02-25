@@ -14,17 +14,21 @@ namespace MvcProje.Controllers
     {
         // GET: Blog
         BlogManager bm = new BlogManager();
+
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
         }
 
+        [AllowAnonymous]
         public PartialViewResult BlogList(int page = 1)
         {
             var bloglist = bm.GetAll().ToPagedList(page,6);
             return PartialView(bloglist);
         }
 
+        [AllowAnonymous]
         public PartialViewResult FeaturedPost()
         {
             //1.post
@@ -84,6 +88,7 @@ namespace MvcProje.Controllers
             return PartialView();
         }
 
+        [AllowAnonymous]
         public PartialViewResult OtherFeaturedPost()
         {
             return PartialView();
@@ -94,23 +99,27 @@ namespace MvcProje.Controllers
         //    return PartialView();
         //}
 
+        [AllowAnonymous]
         public ActionResult BlogDetails()
         {
             return View();
-        } 
+        }
 
+        [AllowAnonymous]
         public PartialViewResult BlogCover(int id)
         {
             var BlogCover = bm.GetBlogById(id);
             return PartialView(BlogCover);
         }
 
+        [AllowAnonymous]
         public PartialViewResult BlogReadAll(int id) //controller tarafında parametre gönderilecek ise 'id' olarak gönderilmesi zorunludur. Çünkü app start klasöründe route config'te parametre kullanılacaksa 'id' olmalı diyor.
         {
             var BlogDetailsList = bm.GetBlogById(id);
             return PartialView(BlogDetailsList);
         }
 
+        [AllowAnonymous]
         public ActionResult BlogByCategory(int id)
         {
             var BlogListByCategory = bm.GetBlogByCategory(id);

@@ -11,17 +11,21 @@ namespace MvcProje.Controllers
     public class ContactController : Controller
     {
         ContactManager cm = new ContactManager();
+
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult SendMessage()
         {
             return View();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public ActionResult SendMessage(Contact p)
         {

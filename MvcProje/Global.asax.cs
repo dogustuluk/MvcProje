@@ -12,6 +12,8 @@ namespace MvcProje
     {
         protected void Application_Start()
         {
+            GlobalFilters.Filters.Add(new AuthorizeAttribute()); // globalde authorize tanımlayarak controller'da tek tek authorize işlemi yapmamış oluruz
+//ama bu şekilde kullanırsak herkesin erişim yapması gereken yerlere "[AllowAnonymous]" eklenmesi gerekli. örneğin sitenin index sayfası.
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
