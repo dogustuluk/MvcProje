@@ -34,5 +34,10 @@ namespace MvcProje.Controllers
                 return RedirectToAction("AuthorLogin","Login");
             }
         }
+        [HttpGet]
+        public ActionResult AdminLogin()
+        {
+            return View();
+        }
     }
 }
