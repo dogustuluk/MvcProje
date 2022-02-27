@@ -64,31 +64,31 @@
 
                             </th>
 
-                            <th style="width: 20%">
+                            <th style="width: 10%">
 
                                 Kategori Adı
 
                             </th>
 
-                            <th style="width: 30%">
+                            <th style="width: 15%">
 
                                 Son Bloğun Yazarı
 
                             </th>
 
-                            <th>
+                            <th style="width: 10%">
 
                                 Kategori Bar
 
                             </th>
 
-                            <th style="width: 8%" class="text-center">
+                            <th style="width: 10%" class="text-center">
 
                                 Durum
 
                             </th>
 
-                            <th style="width: 20%">
+                            <th style="width: 15%">
 
                             </th>
 
@@ -206,6 +206,31 @@
         <!-- /.card -->
 
     </section>
+    
+    <button class="btn btn-primary" data-toggle="modal" data-target="#Modal1">Yeni Kategori Ekle</button>
+
+    <div class="modal" id="Modal1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title">
+                        <h1>Kategori Ekle</h1>
+                    </div>
+                </div>
+                <form method="post" action="/Category/AdminCategoryAdd/">
+                    <div class="modal-body">
+                        <label>Kategori Adı</label>
+                        <br />
+                        <input type="text" name="CategoryName" class="form-control" />
+                        <label>Kategori Açıklaması</label>
+                        <input type="text" name="CategoryDescription" class="form-control" />
+                        <br />
+                        <button class="btn btn-info">Ekle</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 </body>
 
