@@ -56,5 +56,15 @@ namespace MvcProje.Controllers
             cm.EditCategory(p);
             return RedirectToAction("AdminCategoryList");
         }
+        public ActionResult CategoryStatusFalse(int id)
+        {
+            cm.CategoryStatusFalseBL(id);
+            return RedirectToAction("AdminCategoryList");
+        }
+        public ActionResult CategoryStatusTrue(int id)
+        {
+            cm.CategoryStatusTrueBL(id);
+            return RedirectToAction("AdminCategoryList");
+        }
     }
 }
