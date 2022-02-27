@@ -23,5 +23,20 @@ namespace BusinessLayer.Concrete
             }
             return repocategory.Insert(p);
         }
+        public Category FindCategory(int id)
+        {
+            return repocategory.Find(x => x.CategoryId == id);
+        }
+        public int EditCategory (Category p)
+        {
+            Category category = repocategory.Find(x => x.CategoryId == p.CategoryId);
+            if (p.CategoryName == "" | p.CategoryName.Length <4)
+            {
+                return -1;
+            }
+            category.CategoryName = p.CategoryName;
+            category.CategoryDescription = p.CategoryDescription;
+            return repocategory.Update(category);
+        }
     }
 }
