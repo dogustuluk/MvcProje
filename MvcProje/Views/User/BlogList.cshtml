@@ -3,7 +3,7 @@
     ViewBag.Title = "BlogList";
     Layout = "~/Views/Shared/_AuthorLayout.cshtml";
 }
-@{ string color = ""; string degree = ""; string progressBar = ""; }
+@{ string color = ""; string degree = ""; string progressBar = ""; int blogRating = 1;}
 <!DOCTYPE html>
 
 <html>
@@ -90,37 +90,40 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            if (item.BlogRating >= 85)
+                            blogRating = item.BlogRating * 10;
+                            if (blogRating >= 90)
                             {
                                 color = "post-category text-white bg-success mb-3";
                                 degree = "Çok Başarılı";
                                 progressBar = "progress-bar bg-green";
 
                             }
-                            if (item.BlogRating >= 70 && item.BlogRating <= 84)
+                            if (blogRating >= 70 && blogRating <= 89)
                             {
                                 color = "post-category text-white bg-blue mb-3";
                                 degree = "Başarılı";
                                 progressBar = "progress-bar bg-blue";
                             }
-                            if (item.BlogRating >= 50 && item.BlogRating <= 69)
+                            if (blogRating >= 50 && blogRating <= 69)
                             {
                                 color = "post-category text-white bg-warning mb-3";
                                 degree = "Yeterli";
                                 progressBar = "progress-bar bg-yellow";
                             }
-                            if (item.BlogRating > 0 && item.BlogRating <= 49)
+                            if (blogRating > 0 && blogRating <= 49)
                             {
                                 color = "post-category text-white bg-danger mb-3";
                                 degree = "Başarısız";
                                 progressBar = "progress-bar bg-red";
                             }
-                            if (item.BlogRating == 0)
+                            if (blogRating == 0)
                             {
                                 color = "post-category text-white bg-black mb-3";
                                 degree = "Oylanmamış Blog";
-                                
+
                             }
+
+
 
                             <tr>
 
@@ -132,8 +135,8 @@
 
                                     <div class="progress progress-sm">
 
-                                        <div class="progress-bar @progressBar" role="progressbar" aria-volumenow="@item.BlogRating"
-                                             aria-volumemin="0" aria-volumemax="10" style="width: @item.BlogRating%">
+                                        <div class="progress-bar @progressBar" role="progressbar" aria-valuenow="10"
+                                             aria-volumemin="0" aria-volumemax="10" style="width: @blogRating%">
 
                                         </div>
 
@@ -141,7 +144,7 @@
 
                                     <small>
 
-                                        Aldığı Puan: @item.BlogRating
+                                        Aldığı Puan: @blogRating
 
                                     </small>
 
