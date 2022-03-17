@@ -96,7 +96,13 @@ namespace MvcProje.Controllers
         {
             FormsAuthentication.SignOut();
             Session.Abandon();
+            if (User.IsInRole("A") | User.IsInRole("B"))
+            {
+                return RedirectToAction("AdminLogin", "Login");
+            }
+            else
             return RedirectToAction("AuthorLogin", "Login");
         }
+        
     }
 }
