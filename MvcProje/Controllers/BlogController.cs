@@ -142,6 +142,7 @@ namespace MvcProje.Controllers
             return View(bloglist);
         }
 
+        [Authorize(Roles = "A")]
         [HttpGet]
         public ActionResult AddNewBlog()
         {
