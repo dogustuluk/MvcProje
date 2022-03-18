@@ -19,10 +19,10 @@ namespace DataAccessLayer.Concrete
             _object = c.Set<T>(); //context üzerinden gönderdiğimiz sınıfı '_object'e ata.
         }
 
-        public int Delete(T p)
+        public void Delete(T p)
         {
             _object.Remove(p);
-            return c.SaveChanges();
+            c.SaveChanges();
         }
 
         public T Find(Expression<Func<T, bool>> where)
@@ -35,10 +35,10 @@ namespace DataAccessLayer.Concrete
             return _object.Find(id);
         }
 
-        public int Insert(T p)
+        public void Insert(T p)
         {
             _object.Add(p);
-            return c.SaveChanges();
+            c.SaveChanges();
         }
 
         public List<T> List()
@@ -51,9 +51,9 @@ namespace DataAccessLayer.Concrete
             return _object.Where(filter).ToList(); //generic list'i bozmamış oluruz böylelikle
         }
 
-        public int Update(T p)
+        public void Update(T p)
         {
-            return c.SaveChanges();
+             c.SaveChanges();
         }
     }
 }

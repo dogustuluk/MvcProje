@@ -17,14 +17,14 @@ namespace BusinessLayer.Concrete
             return repoauthor.List();
         }
 
-        public int AddAuthorBL(Author p)
+        public void AddAuthorBL(Author p)
         {
-            if (p.AuthorName == "" || p.AuthorTitle == "" || p.Mail == "" || p.Password == "" || p.PhoneNumber == ""
-                || p.AboutShort == "" || p.AuthorAbout == "")
-            {
-                return -1;
-            }
-            return repoauthor.Insert(p);
+            //if (p.AuthorName == "" || p.AuthorTitle == "" || p.Mail == "" || p.Password == "" || p.PhoneNumber == ""
+            //    || p.AboutShort == "" || p.AuthorAbout == "")
+            //{
+            //    return -1;
+            //}
+            repoauthor.Insert(p);
         }
 
         //yazar id'sini edit sayfasına taşıma
@@ -34,7 +34,7 @@ namespace BusinessLayer.Concrete
             return repoauthor.Find(x => x.AuthorId == id);
         }
 
-        public int EditAuthor(Author p)
+        public void EditAuthor(Author p)
         {
             Author author = repoauthor.Find(x => x.AuthorId == p.AuthorId);
             author.AboutShort = p.AboutShort;
@@ -45,7 +45,7 @@ namespace BusinessLayer.Concrete
             author.Mail = p.Mail;
             author.Password = p.Password;
             author.PhoneNumber = p.PhoneNumber;
-            return repoauthor.Update(author);
+            repoauthor.Update(author);
 
         }
     }
