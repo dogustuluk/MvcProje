@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace MvcProje.Controllers
     public class CategoryController : Controller
     {
         // GET: Category
-        CategoryManager cm = new CategoryManager(); //bu yapıyla beraber tüm katmanları kullanmış olduk. >> GetAll() metoduna sağ tık yapıp go to definition 
+        CategoryManager cm = new CategoryManager( new EFCategoryDal() ); //bu yapıyla beraber tüm katmanları kullanmış olduk. >> GetAll() metoduna sağ tık yapıp go to definition 
                                                     //dersek dataaccesslayer'daki CategoryManager tüm yapıyı çağırmaktadır.
 
 
