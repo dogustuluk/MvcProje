@@ -17,13 +17,6 @@ namespace MvcProje.Controllers
         CategoryManager cm = new CategoryManager( new EFCategoryDal() ); //bu yapıyla beraber tüm katmanları kullanmış olduk. >> GetAll() metoduna sağ tık yapıp go to definition 
                                                     //dersek dataaccesslayer'daki CategoryManager tüm yapıyı çağırmaktadır.
 
-
-        public ActionResult Index()
-        {
-            var categoryvalues = cm.GetAll();
-            return View(categoryvalues);
-        }
-
         [AllowAnonymous]
         public PartialViewResult BlogDetailsCategoryList()
         {
@@ -63,7 +56,7 @@ namespace MvcProje.Controllers
         [HttpGet]
         public ActionResult CategoryEdit(int id)
         {
-            Category category = cm.FindCategory(id);
+            Category category = cm.GetByID(id);
             return View(category);
         }
         [HttpPost]
