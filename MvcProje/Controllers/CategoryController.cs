@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,8 +44,21 @@ namespace MvcProje.Controllers
         [HttpPost]
         public ActionResult AdminCategoryAdd(Category p)
         {
-            cm.CategoryAddBL(p);
-            return RedirectToAction("AdminCategoryList");
+            CategoryValidator categoryValidator = new CategoryValidator();
+            ValidationResult results = categoryValidator.Validate(p);
+            if (results.IsValid)
+            {
+                cm.CategoryAddBL(p);
+                return RedirectToAction("AdminCategoryList");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
         }
         [HttpGet]
         public ActionResult CategoryEdit(int id)
@@ -54,8 +69,21 @@ namespace MvcProje.Controllers
         [HttpPost]
         public ActionResult CategoryEdit(Category p)
         {
-            cm.EditCategory(p);
-            return RedirectToAction("AdminCategoryList");
+            CategoryValidator categoryValidator = new CategoryValidator();
+            ValidationResult results = categoryValidator.Validate(p);
+            if (results.IsValid)
+            {
+                cm.EditCategory(p);
+                return RedirectToAction("AdminCategoryList");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
         }
         public ActionResult CategoryStatusFalse(int id)
         {
