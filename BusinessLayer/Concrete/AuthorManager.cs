@@ -19,17 +19,7 @@ namespace BusinessLayer.Concrete
         {
             _authorDal = authorDal;
         }
-
-        public void AddAuthorBL(Author p)
-        {
-            //if (p.AuthorName == "" || p.AuthorTitle == "" || p.Mail == "" || p.Password == "" || p.PhoneNumber == ""
-            //    || p.AboutShort == "" || p.AuthorAbout == "")
-            //{
-            //    return -1;
-            //}
-            repoauthor.Insert(p);
-        }
-
+         
         //yazar id'sini edit sayfasına taşıma
 
         public Author FindAuthor(int id)
@@ -59,7 +49,7 @@ namespace BusinessLayer.Concrete
 
         public void AuthorAdd(Author author)
         {
-            throw new NotImplementedException();
+            _authorDal.Insert(author);
         }
 
         public Author GetByID(int id)
