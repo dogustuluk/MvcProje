@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -29,8 +30,8 @@ namespace MvcProje.Controllers
 
         public PartialViewResult MeetTheTeam()
         {
-            AuthorManager autman = new AuthorManager();
-            var authorlist = autman.GetAll();
+            AuthorManager autman = new AuthorManager(new EFAuthorDal());
+            var authorlist = autman.GetList();
             return PartialView(authorlist);
         }
 

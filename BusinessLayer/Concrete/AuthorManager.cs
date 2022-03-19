@@ -1,4 +1,6 @@
-﻿using DataAccessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -8,13 +10,14 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    public class AuthorManager
+    public class AuthorManager: IAuthorService
     {
         Repository<Author> repoauthor = new Repository<Author>();
+        IAuthorDal _authorDal;
 
-        public List<Author> GetAll()
+        public AuthorManager(IAuthorDal authorDal)
         {
-            return repoauthor.List();
+            _authorDal = authorDal;
         }
 
         public void AddAuthorBL(Author p)
@@ -47,6 +50,31 @@ namespace BusinessLayer.Concrete
             author.PhoneNumber = p.PhoneNumber;
             repoauthor.Update(author);
 
+        }
+
+        public List<Author> GetList()
+        {
+            return _authorDal.List();
+        }
+
+        public void AuthorAdd(Author author)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Author GetByID(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AuthorDelete(Author author)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AuthorUpdate(Author author)
+        {
+            throw new NotImplementedException();
         }
     }
 }
