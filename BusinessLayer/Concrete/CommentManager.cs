@@ -32,12 +32,12 @@ namespace BusinessLayer.Concrete
 
         public List<Comment> CommentByStatusTrue()
         {
-            return repocomment.List(x => x.CommentStatus == true);
+            return _commentDal.List(x => x.CommentStatus == true);
         }
 
         public List<Comment> CommentByStatusFalse()
         {
-            return repocomment.List(x => x.CommentStatus == false);
+            return _commentDal.List(x => x.CommentStatus == false);
         }
         public void CommentAdd(Comment c)
         {
@@ -50,16 +50,16 @@ namespace BusinessLayer.Concrete
 
         public void CommentStatusChangeToFalse(int id)
         {
-            Comment comment = repocomment.Find(x => x.CommentId == id);
+            Comment comment = _commentDal.Find(x => x.CommentId == id);
             comment.CommentStatus = false;
-            repocomment.Update(comment);
+            _commentDal.Update(comment);
         }
 
         public void CommentStatusChangeToTrue(int id)
         {
-            Comment comment = repocomment.Find(x => x.CommentId == id);
+            Comment comment = _commentDal.Find(x => x.CommentId == id);
             comment.CommentStatus = true;
-            repocomment.Update(comment);
+            _commentDal.Update(comment);
         }
 
         public List<Comment> GetList()
