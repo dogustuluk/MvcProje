@@ -24,7 +24,7 @@ namespace BusinessLayer.ValidationRules
             RuleFor(x => x.Password).NotEmpty().WithMessage("Şifre alanı boş bırakılamaz");
             RuleFor(x => x.Password).MinimumLength(5).WithMessage("Şifre alanı en az 5 karakterden oluşmalıdır");
             RuleFor(x => x.Password).MaximumLength(50).WithMessage("Şifre alanı maksimum 50 karakterden oluşmalıdır");
-            RuleFor(x => x.PhoneNumber).MinimumLength(16).WithMessage("Telefon numarası minimum 16 karakterden oluşmalıdır");
+            RuleFor(x => x.PhoneNumber).MinimumLength(12).WithMessage("Telefon numarası minimum 12 karakterden oluşmalıdır");
             RuleFor(x => x.PhoneNumber).MaximumLength(16).WithMessage("Telefon numarası en fazla 16 karakterden oluşmalıdır");
             
         }

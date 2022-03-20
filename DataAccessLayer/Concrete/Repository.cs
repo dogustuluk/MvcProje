@@ -57,7 +57,6 @@ namespace DataAccessLayer.Concrete
         {
             var updatedEntity = c.Entry(p);
             updatedEntity.State = EntityState.Modified;
-            
             c.SaveChanges();
         }
     }

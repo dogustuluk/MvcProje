@@ -67,15 +67,28 @@ namespace MvcProje.Controllers
         [HttpGet]
         public ActionResult AuthorEdit(int id)
         {
-            Author author = authormanager.FindAuthor(id);
+            Author author = authormanager.GetByID(id);
             return View(author);
         }
 
         [HttpPost]
         public ActionResult AuthorEdit(Author p)
         {
-            authormanager.EditAuthor(p);
-            return RedirectToAction("AuthorList");
+            AuthorValidator authorValidator = new AuthorValidator();
+            ValidationResult results = authorValidator.Validate(p);
+            if (results.IsValid)
+            {
+                authormanager.AuthorUpdate(p);
+                return RedirectToAction("AuthorList");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
         }
     }
 }
