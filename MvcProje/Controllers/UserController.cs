@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace MvcProje.Controllers
     {
         // GET: User
         UserProfileManager userProfile = new UserProfileManager();
-        BlogManager blogmanager = new BlogManager();
+        BlogManager blogmanager = new BlogManager(new EFBlogDal());
         public ActionResult Index()
         {
             return View();

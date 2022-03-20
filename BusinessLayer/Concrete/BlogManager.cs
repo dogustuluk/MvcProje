@@ -1,4 +1,6 @@
-﻿using DataAccessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -8,15 +10,15 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    public class BlogManager
+    public class BlogManager: IBlogService
     {
         Repository<Blog> repoblog = new Repository<Blog>();
+        IBlogDal _blogDal;
 
-        public List<Blog> GetAll()
+        public BlogManager(IBlogDal blogDal)
         {
-            return repoblog.List();
+            _blogDal = blogDal;
         }
-
       public List<Blog> GetBlogById(int id)
         {
             return repoblog.List(x => x.BlogId == id); //ilgili sınıfa ait parametre göndermemiz gerekiyor. sadece 'list' metodu çağrıldı
@@ -62,6 +64,31 @@ namespace BusinessLayer.Concrete
             blog.CategoryId = p.CategoryId;
             blog.AuthorId = p.AuthorId;
             repoblog.Update(blog);
+        }
+
+        public List<Blog> GetList()
+        {
+            return _blogDal.List();
+        }
+
+        public void BlogAdd(Blog blog)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Blog GetByID(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void BlogDelete(Blog blog)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void BlogUpdate(Blog blog)
+        {
+            throw new NotImplementedException();
         }
     }
 }
