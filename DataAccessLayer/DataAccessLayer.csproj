@@ -64,6 +64,7 @@
     <Compile Include="EntityFramework\EFAuthorDal.cs" />
     <Compile Include="EntityFramework\EFBlogDal.cs" />
     <Compile Include="EntityFramework\EFCategoryDal.cs" />
+    <Compile Include="EntityFramework\EFCommentDal.cs" />
     <Compile Include="Migrations\202201311436371_mig1.cs" />
     <Compile Include="Migrations\202201311436371_mig1.designer.cs">
       <DependentUpon>202201311436371_mig1.cs</DependentUpon>

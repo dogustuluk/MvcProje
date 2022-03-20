@@ -18,6 +18,7 @@ namespace MvcProje.Controllers
     {
         // GET: Blog
         BlogManager bm = new BlogManager(new EFBlogDal());
+        CommentManager cm = new CommentManager(new EFCommentDal());
 
         [AllowAnonymous]
         public ActionResult Index()
@@ -246,7 +247,7 @@ namespace MvcProje.Controllers
 
         public ActionResult GetCommentByBlog(int id)
         {
-            CommentManager cm = new CommentManager();
+            
             var commentlist = cm.CommentByBlog(id);
             return View(commentlist);
         }

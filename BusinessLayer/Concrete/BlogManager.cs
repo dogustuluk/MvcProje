@@ -33,15 +33,6 @@ namespace BusinessLayer.Concrete
         {
             return repoblog.List(x => x.CategoryId == id);
         }
-
-        //public void BlogAddBL(Blog p) 
-        //{
-        //    //if (p.BlogTitle == "" | p.BlogImage == "" | p.BlogTitle.Length <=5 || p.BlogContent.Length <= 200)
-        //    //{
-        //    //    return -1;
-        //    //}
-        //    repoblog.Insert(p);
-        //}
         public List<Blog> GetList()
         {
             return _blogDal.List();

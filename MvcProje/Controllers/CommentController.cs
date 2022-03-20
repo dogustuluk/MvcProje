@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace MvcProje.Controllers
     public class CommentController : Controller
     {
         // GET: Comment
-        CommentManager cm = new CommentManager();
+        CommentManager cm = new CommentManager(new EFCommentDal());
 
         [AllowAnonymous]
         public PartialViewResult CommentList(int id)

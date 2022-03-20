@@ -1,4 +1,6 @@
-﻿using DataAccessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -8,9 +10,15 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    public class CommentManager
+    public class CommentManager: ICommentService
     {
+        ICommentDal _commentDal;
         Repository<Comment> repocomment = new Repository<Comment>();
+
+        public CommentManager(ICommentDal commentDal)
+        {
+            _commentDal = commentDal;
+        }
 
         public List<Comment> CommentList()
         {
@@ -19,7 +27,7 @@ namespace BusinessLayer.Concrete
 
         public List<Comment> CommentByBlog(int id)
         {
-            return repocomment.List(x => x.BlogId == id);
+            return _commentDal.List(x => x.BlogId == id);
         }
 
         public List<Comment> CommentByStatusTrue()
@@ -54,5 +62,24 @@ namespace BusinessLayer.Concrete
             repocomment.Update(comment);
         }
 
+        public List<Comment> GetList()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Comment GetByID(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CommentDelete(Comment comment)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CommentUpdate(Comment comment)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
