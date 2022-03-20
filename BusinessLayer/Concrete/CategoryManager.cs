@@ -12,8 +12,6 @@ namespace BusinessLayer.Concrete
 {
     public class CategoryManager: ICategoryService
     {
-        Repository<Category> repocategory = new Repository<Category>();
-
         ICategoryDal _categoryDal;
 
         public CategoryManager(ICategoryDal categoryDal)
@@ -23,19 +21,19 @@ namespace BusinessLayer.Concrete
 
         public List<Category> GetAll()
         {
-            return repocategory.List();
+            return _categoryDal.List();
         }
         public void CategoryStatusFalseBL(int id)
         {
-            Category category = repocategory.Find(x => x.CategoryId == id);
+            Category category = _categoryDal.Find(x => x.CategoryId == id);
             category.CategoryStatus = false;
-            repocategory.Update(category);
+            _categoryDal.Update(category);
         }
         public void CategoryStatusTrueBL(int id)
         {
-            Category category = repocategory.Find(x => x.CategoryId == id);
+            Category category = _categoryDal.Find(x => x.CategoryId == id);
             category.CategoryStatus = true;
-            repocategory.Update(category);
+            _categoryDal.Update(category);
         }
 
         public List<Category> GetList()
