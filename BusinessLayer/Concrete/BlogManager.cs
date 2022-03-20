@@ -42,30 +42,6 @@ namespace BusinessLayer.Concrete
             //}
             repoblog.Insert(p);
         }
-
-        public void DeleteBlogBL(int p)
-        {
-            Blog blog = repoblog.Find(x => x.BlogId == p);
-            repoblog.Delete(blog);
-        }
-
-        public Blog FindBlog(int id)
-        {
-            return repoblog.Find(x => x.BlogId == id);
-        }
-
-        public void UpdateBlog(Blog p)
-        {
-            Blog blog = repoblog.Find(x => x.BlogId == p.BlogId);
-            blog.BlogTitle = p.BlogTitle;
-            blog.BlogContent = p.BlogContent;
-            blog.BlogDate = p.BlogDate;
-            blog.BlogImage = p.BlogImage;
-            blog.CategoryId = p.CategoryId;
-            blog.AuthorId = p.AuthorId;
-            repoblog.Update(blog);
-        }
-
         public List<Blog> GetList()
         {
             return _blogDal.List();
@@ -78,17 +54,17 @@ namespace BusinessLayer.Concrete
 
         public Blog GetByID(int id)
         {
-            throw new NotImplementedException();
+            return _blogDal.GetByID(id);
         }
 
         public void BlogDelete(Blog blog)
         {
-            throw new NotImplementedException();
+            _blogDal.Delete(blog);
         }
 
         public void BlogUpdate(Blog blog)
         {
-            throw new NotImplementedException();
+            _blogDal.Update(blog);
         }
     }
 }

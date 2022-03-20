@@ -1,8 +1,10 @@
 ﻿using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using PagedList;
 using System;
 using System.Collections.Generic;
@@ -178,14 +180,15 @@ namespace MvcProje.Controllers
 
         public ActionResult DeleteBlog(int id)
         {
-            bm.DeleteBlogBL(id);
+            Blog blog = bm.GetByID(id);
+            bm.BlogDelete(blog);
             return RedirectToAction("AdminBlogList");
         }
 
         [HttpGet]
         public ActionResult UpdateBlog(int id)
         {
-            Blog blog = bm.FindBlog(id);
+            Blog blog = bm.GetByID(id);
             Context c = new Context();
             List<SelectListItem> values = (from x in c.Categories.ToList()
                                            select new SelectListItem
@@ -207,7 +210,22 @@ namespace MvcProje.Controllers
         [HttpPost]
         public ActionResult UpdateBlog(Blog p)
         {
-            bm.UpdateBlog(p);
+            //BlogValidator blogValidator = new BlogValidator();
+            //ValidationResult results = blogValidator.Validate(p);
+            //if (results.IsValid)
+            //{
+            //    bm.BlogUpdate(p);
+            //    return RedirectToAction("AdminBlogList");
+            //}
+            //else
+            //{
+            //    foreach (var item in results.Errors)
+            //    {
+            //        ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+            //    }
+            //}
+            //return View();
+            bm.BlogUpdate(p);
             return RedirectToAction("AdminBlogList");
         }
 

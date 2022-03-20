@@ -12,6 +12,7 @@
 
     @Html.Label("Blog Başlığı")
     @Html.TextBoxFor(x => x.BlogTitle, new { @class = "form-control" })
+    @*@Html.ValidationMessageFor(x => x.BlogTitle)*@
     <br />
 
     @Html.Label("Kategori")
@@ -22,12 +23,14 @@
     <br />
     @Html.Label("Tarih")
     @Html.TextBoxFor(x => x.BlogDate, new { @class = "form-control" })
+    @*@Html.ValidationMessageFor(x => x.BlogDate)*@
     <br />
     @Html.Label("Yazar")
     @Html.DropDownListFor(x => x.AuthorId, (List<SelectListItem>)ViewBag.values2, new { @class = "form-control" })
     <br />
     @Html.Label("İçerik")
     @Html.TextAreaFor(x => x.BlogContent, 5, 20, new { @class = "form-control" })
+    @*@Html.ValidationMessageFor(x => x.BlogContent)*@
     <br />
     <button class="btn btn-info">Güncelle</button>
 </form>

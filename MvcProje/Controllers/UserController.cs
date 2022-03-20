@@ -43,7 +43,7 @@ namespace MvcProje.Controllers
         [HttpGet]
         public ActionResult UpdateBlog(int id)
         {
-            Blog blog = blogmanager.FindBlog(id);
+            Blog blog = blogmanager.GetByID(id);
             Context context = new Context();
             List<SelectListItem> values = (from x in context.Categories.ToList()
                                            select new SelectListItem
@@ -64,7 +64,7 @@ namespace MvcProje.Controllers
         [HttpPost]
         public ActionResult UpdateBlog(Blog updatedblog)
         {
-            blogmanager.UpdateBlog(updatedblog);
+            blogmanager.BlogUpdate(updatedblog);
             return RedirectToAction("BlogList");
         }
         [HttpGet]
