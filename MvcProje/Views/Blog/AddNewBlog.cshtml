@@ -4,25 +4,37 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <form class="form-group" method="post">
+    @Html.AntiForgeryToken()
+   <!--
+        dıştan gelen saldırılara karşı alınan önlem >> formu gönderen kişinin sen olup olmadığını kontrol eder.
+    Dizayn ettiğimiz siteye kullanıcılardan gelen isteklere (request), isteklerin doğruluğunu “Token”ler aracılığıyla anlayıp ona göre cevap verir.
+    Sayfa Post edildiğinde Asp.Net Token post gövdesi içerisinde uzun ve karmaşık yapıda “Token” gönderir.
+    Bunu alan server tarafındaki controller’ımız kendisinde de bulunan token ile post ile gelen token’i karşılaştırır.
+    Eğer tokenler eşleşiyorsa demektir ki request dışarıdan değil de; bizim uygulamamızdan geliyor
+    işleme devam edilir. Eğer eşleşme gerçekleşmiyorsa request gönderen karşı tarafa cevap (response) verilmez.
+   -->
 
     @Html.Label("Blog Başlığı")
     @Html.TextBoxFor(x => x.BlogTitle, new { @class = "form-control" })
+    @*@Html.ValidationMessageFor(x => x.BlogTitle)*@
     <br />
 
     @Html.Label("Kategori")
-    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.values, new { @class = "form-control"})
+    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.values, new { @class = "form-control" })
     <br />
     @Html.Label("Resim Yolu")
     @Html.TextBoxFor(x => x.BlogImage, new { @class = "form-control" })
     <br />
     @Html.Label("Tarih")
     @Html.TextBoxFor(x => x.BlogDate, new { @class = "form-control" })
+    @*@Html.ValidationMessageFor(x => x.BlogDate)*@
     <br />
     @Html.Label("Yazar")
     @Html.DropDownListFor(x => x.AuthorId, (List<SelectListItem>)ViewBag.values2, new { @class = "form-control" })
     <br />
     @Html.Label("İçerik")
-    @Html.TextAreaFor(x => x.BlogContent, 5,20, new { @class = "form-control" })
+    @Html.TextAreaFor(x => x.BlogContent, 5, 20, new { @class = "form-control" })
+    @*@Html.ValidationMessageFor(x => x.BlogContent)*@
     <br />
     <button class="btn btn-info">Kaydet</button>
 </form>

@@ -90,7 +90,7 @@ namespace MvcProje.Controllers
         [HttpPost]
         public ActionResult AddNewBlog(Blog blog)
         {
-            blogmanager.BlogAddBL(blog);
+            blogmanager.BlogAdd(blog);
             return RedirectToAction("BlogList");
         }
         public ActionResult LogOut()

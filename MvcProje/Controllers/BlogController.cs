@@ -56,7 +56,7 @@ namespace MvcProje.Controllers
             ViewBag.blogdate2 = blogdate2;
             ViewBag.blogpostid2 = blogpostid2;
 
-            //3.postGetList
+            //3.post
             var posttitle3 = bm.GetList().OrderByDescending(z => z.BlogId).Where(x => x.CategoryId == 6).Select(y => y.BlogTitle).FirstOrDefault();
             var postimage3 = bm.GetList().OrderByDescending(z => z.BlogId).Where(x => x.CategoryId == 6).Select(y => y.BlogImage).FirstOrDefault();
             var blogdate3 = bm.GetList().OrderByDescending(z => z.BlogId).Where(x => x.CategoryId == 6).Select(y => y.BlogDate).FirstOrDefault();
@@ -174,7 +174,22 @@ namespace MvcProje.Controllers
         [HttpPost]
         public ActionResult AddNewBlog(Blog b)
         {
-            bm.BlogAddBL(b);
+            //BlogValidator blogValidator = new BlogValidator();
+            //ValidationResult results = blogValidator.Validate(b);
+            //if (results.IsValid)
+            //{
+            //    bm.BlogAdd(b);
+            //    return RedirectToAction("AdminBlogList");
+            //}
+            //else
+            //{
+            //    foreach (var item in results.Errors)
+            //    {
+            //        ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+            //    }
+            //}
+            //return View();
+            bm.BlogAdd(b);
             return RedirectToAction("AdminBlogList");
         }
 
