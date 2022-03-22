@@ -57,5 +57,20 @@ namespace BusinessLayer.Concrete
         {
             _blogDal.Update(blog);
         }
+
+        public void TAdd(Blog t)
+        {
+            _blogDal.Insert(t);
+        }
+
+        public void TDelete(Blog t)
+        {
+            _blogDal.Delete(t);
+        }
+
+        public void TUpdate(Blog t)
+        {
+            _blogDal.Update(t);
+        }
     }
 }
