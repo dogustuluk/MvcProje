@@ -20,11 +20,6 @@ namespace BusinessLayer.Concrete
             _contactDal = contactDal;
         }
 
-        public void BLContactAdd(Contact c)
-        {
-            repocontact.Insert(c);
-        }
-
         public Contact GetByID(int id)
         {
             return _contactDal.Find(x => x.ContactId == id);
@@ -37,7 +32,7 @@ namespace BusinessLayer.Concrete
 
         public void TAdd(Contact t)
         {
-            throw new NotImplementedException();
+            _contactDal.Insert(t);
         }
 
         public void TDelete(Contact t)

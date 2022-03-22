@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +32,21 @@ namespace MvcProje.Controllers
         [HttpPost]
         public ActionResult SendMessage(Contact p)
         {
-            cm.BLContactAdd(p);
+            ContactValidator contactValidator = new ContactValidator();
+            ValidationResult results = contactValidator.Validate(p);
+            if (results.IsValid)
+            {
+                p.MessageDate = DateTime.Parse(DateTime.Now.ToString());
+                cm.TAdd(p);
+                return RedirectToAction("Index", "Blog");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
             return View();
         }
 
