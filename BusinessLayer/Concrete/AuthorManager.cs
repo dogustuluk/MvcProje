@@ -47,17 +47,17 @@ namespace BusinessLayer.Concrete
 
         public void TAdd(Author t)
         {
-            throw new NotImplementedException();
+            _authorDal.Insert(t);
         }
 
         public void TDelete(Author t)
         {
-            throw new NotImplementedException();
+            _authorDal.Delete(t);
         }
 
         public void TUpdate(Author t)
         {
-            throw new NotImplementedException();
+            _authorDal.Update(t);
         }
     }
 }
