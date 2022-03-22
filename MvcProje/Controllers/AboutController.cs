@@ -13,7 +13,6 @@ namespace MvcProje.Controllers
 
     public class AboutController : Controller
     {
-        // GET: About
         AboutManager abm = new AboutManager(new EFAboutDal());
         public ActionResult Index()
         {
