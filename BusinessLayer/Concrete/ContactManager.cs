@@ -25,19 +25,9 @@ namespace BusinessLayer.Concrete
             repocontact.Insert(c);
         }
 
-        public List<Contact> GetAll()
-        {
-            return repocontact.List();
-        }
-
         public Contact GetByID(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public Contact GetContactDetails(int id)
-        {
-            return repocontact.Find(x => x.ContactId == id);
+            return _contactDal.Find(x => x.ContactId == id);
         }
 
         public List<Contact> GetList()

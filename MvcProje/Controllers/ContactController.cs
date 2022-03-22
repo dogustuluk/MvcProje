@@ -36,13 +36,13 @@ namespace MvcProje.Controllers
 
         public ActionResult SendBox()
         {
-            var messagelist = cm.GetAll();
+            var messagelist = cm.GetList();
             return View(messagelist);
         }
 
         public ActionResult MessageDetails(int id)
         {
-            Contact contact = cm.GetContactDetails(id);
+            Contact contact = cm.GetByID(id);
             return View(contact);
         }
     }
