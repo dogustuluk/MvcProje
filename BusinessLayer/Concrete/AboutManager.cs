@@ -43,5 +43,20 @@ namespace BusinessLayer.Concrete
         {
             return _aboutDal.List();
         }
+
+        public void TAdd(About t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TDelete(About t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TUpdate(About t)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

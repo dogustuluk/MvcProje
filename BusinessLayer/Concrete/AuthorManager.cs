@@ -44,5 +44,20 @@ namespace BusinessLayer.Concrete
         {
             _authorDal.Update(author);
         }
+
+        public void TAdd(Author t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TDelete(Author t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TUpdate(Author t)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
