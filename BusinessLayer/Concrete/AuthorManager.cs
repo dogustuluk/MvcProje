@@ -25,24 +25,9 @@ namespace BusinessLayer.Concrete
             return _authorDal.List();
         }
 
-        public void AuthorAdd(Author author)
-        {
-            _authorDal.Insert(author);
-        }
-
         public Author GetByID(int id)
         {
             return _authorDal.GetByID(id);
-        }
-
-        public void AuthorDelete(Author author)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AuthorUpdate(Author author)
-        {
-            _authorDal.Update(author);
         }
 
         public void TAdd(Author t)

@@ -10,5 +10,7 @@ namespace BusinessLayer.Abstract
     public interface ICommentService: IGenericService<Comment>
     {
         List<Comment> CommentByBlog(int id);
+        List<Comment> CommentByStatusTrue();
+        List<Comment> CommentByStatusFalse();
     }
 }
