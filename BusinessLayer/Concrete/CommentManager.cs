@@ -13,16 +13,10 @@ namespace BusinessLayer.Concrete
     public class CommentManager: ICommentService
     {
         ICommentDal _commentDal;
-        Repository<Comment> repocomment = new Repository<Comment>();
 
         public CommentManager(ICommentDal commentDal)
         {
             _commentDal = commentDal;
-        }
-
-        public List<Comment> CommentList()
-        {
-            return repocomment.List();
         }
 
         public List<Comment> CommentByBlog(int id)
@@ -56,7 +50,7 @@ namespace BusinessLayer.Concrete
 
         public List<Comment> GetList()
         {
-            throw new NotImplementedException();
+            return _commentDal.List();
         }
 
         public Comment GetByID(int id)

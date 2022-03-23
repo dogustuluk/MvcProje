@@ -13,8 +13,6 @@ namespace BusinessLayer.Concrete
     public class ContactManager: IContactService
     {
         IContactDal _contactDal; 
-        Repository<Contact> repocontact = new Repository<Contact>();
-
         public ContactManager(IContactDal contactDal)
         {
             _contactDal = contactDal;

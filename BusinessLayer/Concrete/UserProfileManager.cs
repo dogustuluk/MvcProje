@@ -1,4 +1,6 @@
-﻿using DataAccessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -8,30 +10,52 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    public class UserProfileManager
+    public class UserProfileManager: IUserProfileManagerService
     {
-        Repository<Author> repouser = new Repository<Author>();
-        Repository<Blog> repouserblog = new Repository<Blog>();
+        IUserProfileManagerDal _userProfileDal;
+        IBlogDal _blogDal;
+        IAuthorDal _authorDal;
+
+        public UserProfileManager(IUserProfileManagerDal userProfileDal, IBlogDal blogDal, IAuthorDal authorDal)
+        {
+            _userProfileDal = userProfileDal;
+            _blogDal = blogDal;
+            _authorDal = authorDal;
+        }
+
         public List<Author> GetAuthorByMail(string p)
         {
-            return repouser.List(x => x.Mail == p);
+            return _authorDal.List(x => x.Mail == p);
         }
         public List<Blog> GetBlogByAuthor(int id)
         {
-            return repouserblog.List(x => x.AuthorId == id);
+            return _blogDal.List(x => x.AuthorId == id);
         }
-        public void EditAuthor(Author auth)
+        
+
+        public List<Author> GetList()
         {
-            Author author = repouser.Find(x => x.AuthorId == auth.AuthorId);
-            author.AboutShort = auth.AboutShort;
-            author.AuthorAbout = auth.AuthorAbout;
-            author.AuthorImage = auth.AuthorImage;
-            author.AuthorName = auth.AuthorName;
-            author.AuthorTitle = auth.AuthorTitle;
-            author.Mail = auth.Mail;
-            author.Password = auth.Password;
-            author.PhoneNumber = auth.PhoneNumber;
-            repouser.Update(author);
+            throw new NotImplementedException();
+        }
+
+        public void TAdd(Author t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Author GetByID(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TDelete(Author t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TUpdate(Author t)
+        {
+            _authorDal.Update(t);
         }
     }
 }

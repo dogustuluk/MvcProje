@@ -1,7 +1,9 @@
 ﻿using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +17,7 @@ namespace MvcProje.Controllers
     public class UserController : Controller
     {
         // GET: User
-        UserProfileManager userProfile = new UserProfileManager();
+        UserProfileManager userProfile = new UserProfileManager(new EFUserProfileManagerDal(), new EFBlogDal(), new EFAuthorDal());
         BlogManager blogmanager = new BlogManager(new EFBlogDal());
         public ActionResult Index()
         {
@@ -29,7 +31,7 @@ namespace MvcProje.Controllers
         }
         public ActionResult UpdateUserProfile(Author auth)
         {
-            userProfile.EditAuthor(auth);
+            userProfile.TUpdate(auth);
             return RedirectToAction("Index");
         }
         public ActionResult BlogList(string mail)
@@ -90,8 +92,21 @@ namespace MvcProje.Controllers
         [HttpPost]
         public ActionResult AddNewBlog(Blog blog)
         {
-            blogmanager.TAdd(blog);
-            return RedirectToAction("BlogList");
+            BlogValidator blogValidator = new BlogValidator();
+            ValidationResult results = blogValidator.Validate(blog);
+            if (results.IsValid)
+            {
+                blogmanager.TAdd(blog);
+                return RedirectToAction("BlogList");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
         }
         public ActionResult LogOut()
         {

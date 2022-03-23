@@ -7,6 +7,7 @@
 <form class="form-group" method="post">
     @Html.Label("Blog Başlığı")
     @Html.TextBoxFor(x => x.BlogTitle, new { @class="form-control" })
+    @Html.ValidationMessageFor(x => x.BlogTitle)
     <br />
     @Html.Label("Kategori")
     @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.values, new { @class = "form-control" })
@@ -16,12 +17,14 @@
     <br />
     @Html.Label("Tarih")
     @Html.TextBoxFor(x => x.BlogDate, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.BlogDate)
     <br />
     @Html.Label("Yazar")
     @Html.DropDownListFor(x => x.AuthorId, (List<SelectListItem>)ViewBag.values2, new { @class = "form-control" })
     <br />
-    @Html.Label("İçeik")
+    @Html.Label("İçerik")
     @Html.TextBoxFor(x => x.BlogContent, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.BlogContent)
     <br />
     <button class="btn btn-info">Yazınızı Ekleyin</button>
 </form>

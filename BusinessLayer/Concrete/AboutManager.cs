@@ -13,8 +13,6 @@ namespace BusinessLayer.Concrete
     public class AboutManager: IAboutService
     {
         IAboutDal _aboutDal;
-        Repository<About> repoabout = new Repository<About>();
-
         public AboutManager(IAboutDal aboutDal)
         {
             _aboutDal = aboutDal;

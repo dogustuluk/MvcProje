@@ -13,8 +13,6 @@ namespace BusinessLayer.Concrete
     public class SubscribeMailManager: IMailService
     {
         IMailDal _mailDal;
-        //Repository<SubscribeMail> reposubscribemail = new Repository<SubscribeMail>();
-
         public SubscribeMailManager(IMailDal mailDal)
         {
             _mailDal = mailDal;
