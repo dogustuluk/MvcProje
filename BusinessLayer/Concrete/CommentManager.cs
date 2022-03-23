@@ -39,14 +39,6 @@ namespace BusinessLayer.Concrete
         {
             return _commentDal.List(x => x.CommentStatus == false);
         }
-        public void CommentAdd(Comment c)
-        {
-            //if (c.UserName.Length <= 2 || c.UserName == "" || c.CommentText.Length <= 4 || c.CommentText.Length >=301 || c.Mail == "")
-            //{
-            //    return -1;
-            //}
-            repocomment.Insert(c);
-        }
 
         public void CommentStatusChangeToFalse(int id)
         {
@@ -78,6 +70,21 @@ namespace BusinessLayer.Concrete
         }
 
         public void CommentUpdate(Comment comment)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TAdd(Comment t)
+        {
+            _commentDal.Insert(t);
+        }
+
+        public void TDelete(Comment t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TUpdate(Comment t)
         {
             throw new NotImplementedException();
         }
