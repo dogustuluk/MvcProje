@@ -64,7 +64,7 @@ namespace MvcProje.Controllers
         [HttpPost]
         public ActionResult UpdateBlog(Blog updatedblog)
         {
-            blogmanager.BlogUpdate(updatedblog);
+            blogmanager.TUpdate(updatedblog);
             return RedirectToAction("BlogList");
         }
         [HttpGet]
@@ -90,7 +90,7 @@ namespace MvcProje.Controllers
         [HttpPost]
         public ActionResult AddNewBlog(Blog blog)
         {
-            blogmanager.BlogAdd(blog);
+            blogmanager.TAdd(blog);
             return RedirectToAction("BlogList");
         }
         public ActionResult LogOut()

@@ -190,14 +190,14 @@ namespace MvcProje.Controllers
             //    }
             //}
             //return View();
-            bm.BlogAdd(b);
+            bm.TAdd(b);
             return RedirectToAction("AdminBlogList");
         }
 
         public ActionResult DeleteBlog(int id)
         {
             Blog blog = bm.GetByID(id);
-            bm.BlogDelete(blog);
+            bm.TDelete(blog);
             return RedirectToAction("AdminBlogList");
         }
 
@@ -241,7 +241,7 @@ namespace MvcProje.Controllers
             //    }
             //}
             //return View();
-            bm.BlogUpdate(p);
+            bm.TUpdate(p);
             return RedirectToAction("AdminBlogList");
         }
 
