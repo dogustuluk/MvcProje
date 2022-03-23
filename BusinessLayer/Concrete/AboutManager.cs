@@ -19,21 +19,6 @@ namespace BusinessLayer.Concrete
         {
             _aboutDal = aboutDal;
         }
-
-        public void AboutAdd(About about)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AboutDelete(About about)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AboutUpdate(About about)
-        {
-            _aboutDal.Update(about);
-        }
         public About GetByID(int id)
         {
             throw new NotImplementedException();
@@ -56,7 +41,7 @@ namespace BusinessLayer.Concrete
 
         public void TUpdate(About t)
         {
-            throw new NotImplementedException();
+            _aboutDal.Update(t);
         }
     }
 }
