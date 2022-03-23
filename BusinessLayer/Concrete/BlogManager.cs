@@ -12,7 +12,6 @@ namespace BusinessLayer.Concrete
 {
     public class BlogManager: IBlogService
     {
-        Repository<Blog> repoblog = new Repository<Blog>();
         IBlogDal _blogDal;
 
         public BlogManager(IBlogDal blogDal)
@@ -31,7 +30,7 @@ namespace BusinessLayer.Concrete
 
         public List<Blog> GetBlogByCategory(int id)
         {
-            return repoblog.List(x => x.CategoryId == id);
+            return _blogDal.List(x => x.CategoryId == id);
         }
         public List<Blog> GetList()
         {
